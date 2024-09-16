@@ -1,11 +1,16 @@
+//MainActivity
 package com.example.fetchhiringapp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -39,11 +44,38 @@ fun HiringData(modifier: Modifier = Modifier, viewModel: MyViewModel = viewModel
     val data = viewModel.fetchData.observeAsState().value
 
     if (data != null) {
-        Text(
-            text = data,
+        LazyColumn(
             modifier = modifier
-                .padding(18.dp)
-        )
+                .fillMaxSize()
+                .padding(16.dp)
+        ) {
+            items(data) { item ->
+                ItemCard(item = item)
+            }
+        }
+    }
+}
+
+@Composable
+fun ItemCard(item: Item, modifier: Modifier = Modifier) {
+    Card(modifier = modifier) {
+        Column {
+            Text(
+                text = "ID: ${item.id}",
+                modifier = Modifier.padding(1.dp),
+                style = MaterialTheme.typography.headlineSmall
+            )
+            Text(
+                text = "List ID: ${item.listId}",
+                modifier = Modifier.padding(1.dp),
+                style = MaterialTheme.typography.bodyMedium
+            )
+            Text(
+                text = "Name: ${item.name}",
+                modifier = Modifier.padding(1.dp),
+                style = MaterialTheme.typography.bodyMedium
+            )
+        }
     }
 }
 

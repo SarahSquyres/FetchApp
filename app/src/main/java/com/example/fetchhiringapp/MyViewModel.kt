@@ -1,3 +1,4 @@
+//MyViewModel
 package com.example.fetchhiringapp
 
 import androidx.lifecycle.LiveData
@@ -7,8 +8,8 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
 class MyViewModel: ViewModel() {
-    private val _fetchData = MutableLiveData("No Data")
-    val fetchData: LiveData<String> get() = _fetchData
+    private val _fetchData = MutableLiveData<List<Item>>(emptyList())
+    val fetchData: LiveData<List<Item>> get() = _fetchData
 
     init {
         viewModelScope.launch {
@@ -17,6 +18,9 @@ class MyViewModel: ViewModel() {
     }
 
     private suspend fun getItem() {
-        _fetchData.value = RetrofitClient.fetchDataAPIService.getItems().toString()
+        val items = RetrofitClient.fetchDataAPIService.getItems()
+        val filteredItems = items.filter { it.name != null && it.name.isNotEmpty() }
+        val sortedItems = filteredItems.sortedWith(compareBy({ it.listId }, { it.name }))
+        _fetchData.value = sortedItems
     }
 }
