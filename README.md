@@ -18,6 +18,9 @@ The IDE used for this application is Android Studio and the language used is Kot
 
 ## How to Install
 Installation of this project is super simple. Feel free to clone using terminal command: 
+```
+git clone git@github.com:SarahSquyres/FetchApp.git
+```
 
 ## Acknowledgements
 I would like to thank the following developers for the hard work they put in to create the video tutorials that helped me complete this project.
