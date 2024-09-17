@@ -14,10 +14,6 @@ The user interface was designed and implemented using Kotlin's Jetpack Compose f
 See the app in action!
   [FetchHiringScreenRecording.webm](https://github.com/user-attachments/assets/c3dfe362-1c69-4671-af95-3544f7241cd8)
 
-<div align="center">
-    [FetchHiringScreenRecording.webm](https://github.com/user-attachments/assets/c3dfe362-1c69-4671-af95-3544f7241cd8)
-</div>
-
 ## Dependencies
 * **UI:** [Jetpack Compose](https://developer.android.com/compose)
 * **HTTP Requests:** [Retrofit](https://square.github.io/retrofit/)
