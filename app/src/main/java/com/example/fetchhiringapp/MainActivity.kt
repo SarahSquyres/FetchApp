@@ -7,22 +7,29 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -37,23 +44,23 @@ class MainActivity : ComponentActivity() {
             FetchHiringAppTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = Color(0xFF222222)
                 ) {
                     val navController = rememberNavController()
-                    NavHost(navController = navController, startDestination = "main_Activity", builder = {
-                        composable("main_Activity"){
+                    NavHost(navController = navController, startDestination = Routes.mainScreen, builder = {
+                        composable(Routes.mainScreen){
                             ListButtons(navController)
                         }
-                        composable("list_One"){
+                        composable(Routes.listOne){
                             GroupOneData()
                         }
-                        composable("list_Two"){
+                        composable(Routes.listTwo){
                             GroupTwoData()
                         }
-                        composable("list_Three"){
+                        composable(Routes.listThree){
                             GroupThreeData()
                         }
-                        composable("list_Four"){
+                        composable(Routes.listFour){
                             GroupFourData()
                         }
                     })
@@ -68,85 +75,124 @@ fun ListButtons(navController: NavController) {
     Column(
         Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-
+        verticalArrangement = Arrangement.Center,
     ) {
-        Button(onClick = {
-            navController.navigate("list_One")
-        }) {
-            Text(text = "View List ID 1")
-        }
-        Button(onClick = {
-            navController.navigate("list_Two")
-        }) {
-            Text(text = "View List ID 2")
-        }
-        Button(onClick = {
-            navController.navigate("list_Three")
-        }) {
-            Text(text = "View List ID 3")
-        }
-        Button(onClick = {
-            navController.navigate("list_Four")
-        }) {
-            Text(text = "View List ID 4")
-        }
-    }
-
-}
-@Composable
-fun HiringData(modifier: Modifier = Modifier, viewModel: MyViewModel = viewModel()) {
-    val data = viewModel.fetchData.observeAsState().value
-
-    if (data != null) {
-        Column(
-            modifier = modifier
-                .fillMaxSize()
-                .padding(50.dp)
+        Text(text = "Welcome to MyListApp",
+            fontWeight = FontWeight.Bold,
+            fontSize = 25.sp,
+            color = Color.White,
+            modifier = Modifier
+                .padding(1.dp)
+        )
+        Icon(
+            painter = painterResource(id = R.drawable.baseline_list_alt_24),
+            contentDescription = "List Icon",
+            modifier = Modifier.size(200.dp),
+            tint = Color.LightGray
+        )
+        Text(text = "Select the list you would like to view:",
+            fontWeight = FontWeight.Bold,
+            fontSize = 17.sp,
+            color = Color.White,
+            modifier = Modifier
+                .padding(1.dp)
+            )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly
         ) {
-            data.forEach { (listId, items) ->
-                Text(
-                    text = "List ID: $listId",
-                    modifier = Modifier.padding(1.dp),
-                    style = MaterialTheme.typography.headlineMedium
+            Button(
+                onClick = {
+                    navController.navigate(Routes.listOne)
+                },
+                modifier = Modifier
+                    .size(150.dp)
+                    .aspectRatio(1f),
+                shape = RoundedCornerShape(5.dp),
+                colors = ButtonDefaults.buttonColors(Color(0xFF9FBDC6)),
+            ) {
+                Text(text = "View List ID 1",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 25.sp,
+                    modifier = Modifier
+                        .padding(1.dp)
                 )
-                LazyColumn {
-                    items(items) { item ->
-                        ItemCard(item = item)
-                    }
-                }
+            }
+            Button(
+                onClick = {
+                    navController.navigate(Routes.listTwo)
+                },
+                modifier = Modifier
+                    .size(150.dp)
+                    .aspectRatio(1f),
+                shape = RoundedCornerShape(5.dp),
+                colors = ButtonDefaults.buttonColors(Color(0xFF9FBDC6)),
+            ) {
+                Text(text = "View List ID 2",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 25.sp,
+                    modifier = Modifier
+                        .padding(1.dp)
+                )
+            }
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            Button(
+                onClick = {
+                    navController.navigate(Routes.listThree)
+                },
+                modifier = Modifier
+                    .size(150.dp)
+                    .aspectRatio(1f),
+                shape = RoundedCornerShape(5.dp),
+                colors = ButtonDefaults.buttonColors(Color(0xFF9FBDC6)),
+            ) {
+                Text(text = "View List ID 3",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 25.sp,
+                    modifier = Modifier
+                        .padding(1.dp)
+                )
+            }
+            Button(
+                onClick = {
+                    navController.navigate(Routes.listFour)
+                },
+                modifier = Modifier
+                    .size(150.dp)
+                    .aspectRatio(1f),
+                shape = RoundedCornerShape(5.dp),
+                colors = ButtonDefaults.buttonColors(Color(0xFF9FBDC6))
+            ) {
+                Text(
+                    text = "View List ID 4",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 25.sp,
+                    modifier = Modifier
+                        .padding(1.dp)
+                )
             }
         }
     }
 }
 
+@Preview(showBackground = true)
 @Composable
-fun ItemCard(item: Item, modifier: Modifier = Modifier) {
-    Card(modifier = modifier) {
-        Column {
-            Text(
-                text = "List ID: ${item.listId}",
-                modifier = Modifier.padding(1.dp),
-                style = MaterialTheme.typography.headlineMedium
-            )
-            Text(
-                text = "Name: ${item.name}",
-                modifier = Modifier.padding(1.dp),
-                style = MaterialTheme.typography.headlineSmall
-            )
-            Text(
-                text = "ID: ${item.id}",
-                modifier = Modifier.padding(1.dp),
-                style = MaterialTheme.typography.bodyMedium
-            )
+fun ListButtonsPreview() {
+    FetchHiringAppTheme {
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            val navController = rememberNavController()
+            ListButtons(navController)
         }
     }
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//fun HiringDataPreview() {
-//    FetchHiringAppTheme {
-//        ListButtons(navController)
-//    }
-//}

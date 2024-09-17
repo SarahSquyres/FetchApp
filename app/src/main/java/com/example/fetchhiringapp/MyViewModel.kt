@@ -20,8 +20,14 @@ class MyViewModel: ViewModel() {
     private suspend fun getItem() {
         val items = RetrofitClient.fetchDataAPIService.getItems()
         val filteredItems = items.filter { it.name != null && it.name.isNotEmpty() }
-        val sortedItems = filteredItems.sortedWith(compareBy({ it.listId }, { it.name }))
+        val sortedItems = filteredItems.sortedWith(compareBy({ it.listId }, { it.name!!.extractNumericValue() }))
         val groupedItems = sortedItems.groupBy { it.listId }
         _fetchData.value = groupedItems
+    }
+
+    private fun String.extractNumericValue(): Int {
+        val regex = """\d+""".toRegex()
+        val match = regex.find(this)
+        return match?.value?.toIntOrNull() ?: 0
     }
 }
