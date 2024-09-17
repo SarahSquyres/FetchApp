@@ -2,11 +2,13 @@
 
 ## Application Description
 
-My List App provides a user-friendly interface for viewing lists of items.  The items are organized by List ID for a better user experience. 
-Users can select a specific group to view its corresponding list, which is scrollable and sorted by item name. 
-The application fetches data from an API endpoint using HTTP requests and returns a list of objects. 
-The user interface was designed and implemented using Kotlin's Jetpack Compose framework, ensuring a modern and intuitive experience.
-
+The My List Viewer App is a Kotlin-based Android application designed to provide a seamless way to view lists of items. By using a List ID-based organization, the app offers a clear and intuitive user experience.
+<br>
+**Key Features**
+* **List Organization:** Lists are categorized by List ID, making it easy to find the specific list you're looking for.
+* **Scrollable and Sorted Lists:** List items are displayed in a scrollable format, sorted by item name for easy navigation.
+* **API Integration:** The app fetches list data from an API endpoint using an HTTP GET request, ensuring up-to-date information.
+* **Modern UI:** The user interface is built with Jetpack Compose, offering a modern and visually appealing design.
 * **IDE:** Android Studio
 * **Programming Language:** Kotlin
 
