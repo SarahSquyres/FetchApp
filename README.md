@@ -1,13 +1,22 @@
-# My List App
+# My List Viewer App
 
 ## Application Description
 
 My List App provides a user-friendly interface for viewing lists of items.  The items are organized by List ID for a better user experience. 
 Users can select a specific group to view its corresponding list, which is scrollable and sorted by item name. 
-The IDE used for this application is Android Studio and the language used is Kotlin. The application makes a Http request to an API endpoint and returns a list of objects. I have built the UI to display the information in an organized and intuitive interface.
+The application fetches data from an API endpoint using HTTP requests and returns a list of objects. 
+The user interface was designed and implemented using Kotlin's Jetpack Compose framework, ensuring a modern and intuitive experience.
+
+* **IDE:** Android Studio
+* **Programming Language:** Kotlin
 
 ## Video Preview
+See the app in action!
   [FetchHiringScreenRecording.webm](https://github.com/user-attachments/assets/c3dfe362-1c69-4671-af95-3544f7241cd8)
+
+<div align="center">
+    [FetchHiringScreenRecording.webm](https://github.com/user-attachments/assets/c3dfe362-1c69-4671-af95-3544f7241cd8)
+</div>
 
 ## Dependencies
 * **UI:** [Jetpack Compose](https://developer.android.com/compose)
