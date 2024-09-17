@@ -22,7 +22,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 
-
 @Composable
 fun GroupOneData(modifier: Modifier = Modifier, viewModel: MyViewModel = viewModel()) {
     val data = viewModel.fetchData.observeAsState().value
@@ -99,4 +98,3 @@ fun GroupOneItemCard(item: Item, modifier: Modifier = Modifier) {
         }
     }
 }
-

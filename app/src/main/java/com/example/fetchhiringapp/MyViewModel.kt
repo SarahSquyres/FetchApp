@@ -1,4 +1,3 @@
-// MyViewModel
 package com.example.fetchhiringapp
 
 import androidx.lifecycle.LiveData

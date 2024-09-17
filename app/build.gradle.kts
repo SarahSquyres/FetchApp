@@ -78,7 +78,7 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-moshi:2.9.0")
     // OkHttp Interceptor
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
-
+    // Navigation with Compose
     val nav_version = "2.8.0"
     implementation("androidx.navigation:navigation-compose:$nav_version")
 

@@ -1,4 +1,3 @@
-//Item.kt
 package com.example.fetchhiringapp
 
 data class Item(

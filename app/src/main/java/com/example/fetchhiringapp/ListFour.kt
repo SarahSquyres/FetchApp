@@ -1,4 +1,3 @@
-//MainActivity
 package com.example.fetchhiringapp
 
 import androidx.compose.foundation.layout.Column
@@ -22,7 +21,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-
 
 @Composable
 fun GroupFourData(modifier: Modifier = Modifier, viewModel: MyViewModel = viewModel()) {
@@ -100,4 +98,3 @@ fun GroupFourItemCard(item: Item, modifier: Modifier = Modifier) {
         }
     }
 }
-
