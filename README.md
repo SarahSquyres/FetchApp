@@ -13,6 +13,7 @@ The user interface was designed and implemented using Kotlin's Jetpack Compose f
 ## Video Preview
 See the app in action!
 <div align="center">
+  
 [FetchHiringScreenRecording.webm](https://github.com/user-attachments/assets/236a86c1-6bd6-47a7-8184-14b5bb0f94a4)
 
 </div>
