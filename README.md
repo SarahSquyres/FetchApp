@@ -35,6 +35,7 @@ git clone git@github.com:SarahSquyres/FetchApp.git
 ```
 
 ## Acknowledgements
-I would like to thank the following developers for the hard work they put in to create the video tutorials that helped me complete this project.
+I would like to express my sincere gratitude to the following developers for their invaluable video tutorials. Their guidance and expertise were instrumental in the successful completion of this project.
 * [Daniel Talks Code](https://www.youtube.com/watch?v=F5sj_PFzzx0&t=1339s)
 * [Bimal Kafle](https://www.youtube.com/watch?v=wJKwsI5WUI4&list=PLcoCy1c_Mc9kNAQv3t26nsNSSHmQJQwME&index=6)
+Thank you for sharing your knowledge and skills with the community. Your efforts have made a significant impact on my learning journey!
