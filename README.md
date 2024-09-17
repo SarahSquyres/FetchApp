@@ -3,7 +3,8 @@
 ## Application Description
 
 The My List Viewer App is a Kotlin-based Android application designed to provide a seamless way to view lists of items. By using a List ID-based organization, the app offers a clear and intuitive user experience.
-<br>
+
+
 **Key Features**
 * **List Organization:** Lists are categorized by List ID, making it easy to find the specific list you're looking for.
 * **Scrollable and Sorted Lists:** List items are displayed in a scrollable format, sorted by item name for easy navigation.
