@@ -30,7 +30,7 @@ See the app in action!
 * **Navigation:** [Jetpack Compose Navigation](https://developer.android.com/develop/ui/compose/navigation)
 
 ## How to Install
-Feel free to clone this project using this terminal command: 
+Feel free to clone this project using the following terminal command: 
 ```
 git clone git@github.com:SarahSquyres/FetchApp.git
 ```
