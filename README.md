@@ -7,10 +7,10 @@ This application provides a user-friendly interface for viewing lists of items. 
 Users can select a specific group to view its corresponding list, which is scrollable and sorted by item name.
 
 ## Dependencies
-UI: Jetpack Compose
-HTTP Requests: Retrofit
-JSON Data: Moshi
-HTTP Request Logging: OkHttp Interceptor
-Navigation: Jetpack Compose Navigation
+* **UI:** [Jetpack Compose](https://developer.android.com/compose)
+* **HTTP Requests:** [Retrofit](https://square.github.io/retrofit/)
+* **JSON Data:** [Moshi](https://github.com/square/moshi)
+* **HTTP Request Logging:** [OkHttp Interceptor](https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor)
+* **Navigation:** [Jetpack Compose Navigation](https://developer.android.com/develop/ui/compose/navigation)
 
 </div>
