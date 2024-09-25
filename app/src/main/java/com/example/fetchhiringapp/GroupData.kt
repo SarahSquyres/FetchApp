@@ -23,11 +23,12 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun GroupFourData(modifier: Modifier = Modifier, viewModel: MyViewModel = viewModel()) {
+fun GroupData(selectedListId: Int, modifier: Modifier = Modifier, viewModel: MyViewModel = viewModel()) {
     val data = viewModel.fetchData.observeAsState().value
 
     if (data != null) {
-        val listId4Items = data.filter { (listId, _) -> listId == 4 }.flatMap { (_, items) -> items }
+        val listIdItems = data.filter { (listId, _) -> selectedListId == listId }.flatMap { (_, items) -> items }
+
 
         LazyColumn(
             modifier = modifier
@@ -35,15 +36,15 @@ fun GroupFourData(modifier: Modifier = Modifier, viewModel: MyViewModel = viewMo
                 .padding(50.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            items(listId4Items) { item ->
-                GroupFourItemCard(item = item)
+            items(listIdItems) { item ->
+                GroupItemCard(item = item)
             }
         }
     }
 }
 
 @Composable
-fun GroupFourItemCard(item: Item, modifier: Modifier = Modifier) {
+fun GroupItemCard(item: Item, modifier: Modifier = Modifier) {
     Card(
         shape = RoundedCornerShape(4.dp),
         colors = CardDefaults.cardColors(containerColor = Color.DarkGray),

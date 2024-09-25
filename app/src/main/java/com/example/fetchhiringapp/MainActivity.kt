@@ -50,16 +50,16 @@ class MainActivity : ComponentActivity() {
                             ListButtons(navController)
                         }
                         composable(Routes.listOne){
-                            GroupOneData()
+                            GroupData(1)
                         }
                         composable(Routes.listTwo){
-                            GroupTwoData()
+                            GroupData(2)
                         }
                         composable(Routes.listThree){
-                            GroupThreeData()
+                            GroupData(3)
                         }
                         composable(Routes.listFour){
-                            GroupFourData()
+                            GroupData(4)
                         }
                     })
                 }
