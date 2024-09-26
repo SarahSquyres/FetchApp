@@ -6,4 +6,5 @@ object Routes {
     var listTwo = "list_Two"
     var listThree = "list_Three"
     var listFour = "list_Four"
+    var search = "search"
 }

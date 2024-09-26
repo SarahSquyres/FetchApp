@@ -4,11 +4,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class MyViewModel: ViewModel() {
     private val _fetchData = MutableLiveData<Map<Int, List<Item>>>(emptyMap())
     val fetchData: LiveData<Map<Int, List<Item>>> get() = _fetchData
+
+    private val _searchText = MutableStateFlow("Item ")
+    val searchText = _searchText.asStateFlow()
 
     init {
         viewModelScope.launch {
@@ -19,7 +24,8 @@ class MyViewModel: ViewModel() {
     private suspend fun getItem() {
         val items = RetrofitClient.fetchDataAPIService.getItems()
         val filteredItems = items.filter { it.name != null && it.name.isNotEmpty() }
-        val sortedItems = filteredItems.sortedWith(compareBy({ it.listId }, { it.name!!.extractNumericValue() }))
+        val sortedItems =
+            filteredItems.sortedWith(compareBy({ it.listId }, { it.name!!.extractNumericValue() }))
         val groupedItems = sortedItems.groupBy { it.listId }
         _fetchData.value = groupedItems
     }
@@ -28,5 +34,9 @@ class MyViewModel: ViewModel() {
         val regex = """\d+""".toRegex()
         val match = regex.find(this)
         return match?.value?.toIntOrNull() ?: 0
+    }
+
+    fun onSearchTextChange(text: String) {
+        _searchText.value = text
     }
 }

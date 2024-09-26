@@ -14,6 +14,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,20 +25,29 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
 fun GroupData(selectedListId: Int, modifier: Modifier = Modifier, viewModel: MyViewModel = viewModel()) {
-    val data = viewModel.fetchData.observeAsState().value
+    Column {
+        val searchText = viewModel.searchText.collectAsState(initial = "").value
+        SearchBar(
+            text = searchText,
+            onTextChange = { text -> viewModel.onSearchTextChange(text) }
+        )
+        val data = viewModel.fetchData.observeAsState().value
 
-    if (data != null) {
-        val listIdItems = data.filter { (listId, _) -> selectedListId == listId }.flatMap { (_, items) -> items }
+        if (data != null) {
+            val listIdItems = data.filter { (listId, _) -> selectedListId == listId }.flatMap { (_, items) -> items }
+            val filteredItems = listIdItems.filter { item ->
+                item.name?.contains(searchText, ignoreCase = true) ?: false
+            }
 
-
-        LazyColumn(
-            modifier = modifier
-                .fillMaxSize()
-                .padding(50.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            items(listIdItems) { item ->
-                GroupItemCard(item = item)
+            LazyColumn(
+                modifier = modifier
+                    .fillMaxSize()
+                    .padding(50.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                items(filteredItems) { item ->
+                    GroupItemCard(item = item)
+                }
             }
         }
     }

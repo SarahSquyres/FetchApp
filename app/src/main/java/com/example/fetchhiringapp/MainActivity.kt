@@ -10,8 +10,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -60,6 +62,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(Routes.listFour){
                             GroupData(4)
+                        }
+                        composable(Routes.search){
+                            Search()
                         }
                     })
                 }
@@ -171,6 +176,31 @@ fun ListButtons(navController: NavController) {
             ) {
                 Text(
                     text = "View List ID 4",
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 25.sp,
+                    modifier = Modifier
+                        .padding(1.dp)
+                )
+            }
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.SpaceEvenly
+        ) {
+            Button(
+                onClick = {
+                    navController.navigate(Routes.search)
+                },
+                modifier = Modifier
+                    .width(300.dp)
+                    .height(100.dp),
+                shape = RoundedCornerShape(5.dp),
+                colors = ButtonDefaults.buttonColors(Color(0xFF9FBDC6)),
+            ) {
+                Text(
+                    text = "Search All Lists",
                     fontWeight = FontWeight.Bold,
                     fontSize = 25.sp,
                     modifier = Modifier
